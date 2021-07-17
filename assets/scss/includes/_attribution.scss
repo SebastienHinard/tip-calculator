@@ -1,8 +1,8 @@
 .attribution {
     position: absolute;
-    top: .5em;
-    right: 3em;
-    left: .5em;
+    top: 12px;
+    right: 60px;
+    left: 12px;
     text-align: center;
     background: $color-darkest;
     padding: .4em;
@@ -40,14 +40,14 @@
     }
 
     &__toggle {
-        font-size: 1em;
+        font-size: .7em;
         appearance: none;
         position: absolute;
         border: none;
-        top: .5em;
-        right: .5em;
-        width: 2em;
-        height: 2em;
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
         border-radius: 50%;
         background: $color-darkest;
         transition: .25s ease-in-out;
@@ -55,7 +55,7 @@
         cursor: pointer;
 
         img {
-            width: .8em;
+            width: 14px;
             position: relative;
             top: 3px;
             left: 0;
