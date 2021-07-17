@@ -1,0 +1,90 @@
+.attribution {
+    position: absolute;
+    top: .5em;
+    right: 3em;
+    left: .5em;
+    text-align: center;
+    background: $color-darkest;
+    padding: .4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: .2em;
+    transition: .25s ease-in-out;
+    transform-origin: right;
+    transform: scaleX(0);
+
+    &.active {
+        transform: none;
+    }
+
+    span {
+        font-size: .5em;
+        margin: .1em 0;
+        color: $color-white;
+    }
+
+    a {
+        color: $color-strong;
+    }
+
+    @media (min-width: 768px) {
+        border-radius: .5em;
+        padding: .5em 1em;
+        left: unset;
+
+        span {
+            font-size: .7em;
+        }
+    }
+
+    &__toggle {
+        font-size: 1em;
+        appearance: none;
+        position: absolute;
+        border: none;
+        top: .5em;
+        right: .5em;
+        width: 2em;
+        height: 2em;
+        border-radius: 50%;
+        background: $color-darkest;
+        transition: .25s ease-in-out;
+        overflow: hidden;
+        cursor: pointer;
+
+        img {
+            width: .8em;
+            position: relative;
+            top: 3px;
+            left: 0;
+            transition: inherit;
+        }
+
+        &:after {
+            content: "?";
+            position: absolute;
+            top: 2px;
+            right: 8px;
+            transform: translateX(20px);
+            transition: inherit;
+            color: $color-dark;
+            font-weight: 700;
+        }
+
+        &:hover,
+        &:focus,
+        &.active {
+            transform: scale(1.2);
+
+            img {
+                left: -4px;
+            }
+
+            &:after {
+                transform: none;
+            }
+        }
+    }
+}

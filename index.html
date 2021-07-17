@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <title>Frontend Mentor | Tip calculator app</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <link rel="stylesheet" href="./assets/scss/styles.css">
+</head>
+<body>
+  <div id="calculator_app">
+    <header>
+      <h1 class="calculator__title">Spli<br>tter</h1>
+    </header>
+    <main>
+      <div class="calculator">
+        <div class="calculator__left">
+          <h2 class="calculator__label">Bill</h2>
+          <div class="calculator__input-group">
+            <label for="bill" class="sr-only">How much is your bill?</label>
+            <input
+            id ="bill"
+            type="text"
+            class="calculator__input calculator__input--bill"
+            :class="{error: isNaN(bill)}"
+            placeholder="Your bill"
+            v-model="bill">
+            <div class="calculator__error" v-if="bill && isNaN(bill)">Must be numeric</div>
+            <div class="calculator__error" v-if="bill && bill == 0">Can't be zero</div>
+            <div class="calculator__error" v-if="bill && bill < 0">Can't be negative</div>
+          </div>
+          <h2 class="calculator__label">Select tip %</h2>
+          <div class="calculator__tips">
+            <button
+            v-for="static_tip in static_tips"
+            class="calculator__btn"
+            :class="{active: tip === static_tip && !custom_tip}"
+            type="button"
+            @click="setTip(static_tip)"
+            title="Add a 5% Tip">{{static_tip}}%</button>
+            <div class="calculator__input-group">
+              <label for="custom-tip" class="sr-only">Add a custom Tip</label>
+              <input
+              class="calculator__input"
+              :class="{error: isNaN(custom_tip)}"
+              id="custom-tip"
+              type="text"
+              placeholder="Custom"
+              v-model="custom_tip">
+              <div class="calculator__error calculator__error--bellow" v-if="custom_tip && isNaN(custom_tip)">Must be numeric</div>
+              <div class="calculator__error calculator__error--bellow" v-if="custom_tip && custom_tip < 0">Can't be negative</div>
+            </div>
+          </div>
+          <h2 class="calculator__label">Number of people</h2>
+          <div class="calculator__input-group">
+            <label for="people" class="sr-only">How many people are you?</label>
+            <input
+            id="people"
+            type="text"
+            class="calculator__input calculator__input--people"
+            :class="{error: isNaN(people) || !Number.isInteger(Number(people))}"
+            placeholder="How many people?"
+            v-model="people">
+            <div class="calculator__error calculator__error--bellow" v-if="people && isNaN(people)">Must be numeric</div>
+            <div class="calculator__error calculator__error--bellow" v-if="people && people == 0">Can't be zero</div>
+            <div class="calculator__error calculator__error--bellow" v-if="people && people < 0">Can't be negative</div>
+            <div class="calculator__error calculator__error--bellow" v-if="people && !isNaN(people) && !Number.isInteger(Number(people))">Can you divide people ?</div>
+          </div>
+        </div>
+        <div class="calculator__right">
+          <div class="calculator__result-row">
+            <h2 class="calculator__result-label">Tip amount<span>/ person</span></h2>
+            <div class="calculator__result-count">{{tip_per_person}}</div>
+          </div>
+          <div class="calculator__result-row">
+            <h2 class="calculator__result-label">Total<span>/ person</span></h2>
+            <div class="calculator__result-count">{{total_per_person}}</div>
+          </div>
+          <button
+          class="calculator__btn calculator__btn--reset"
+          type="button"
+          title="Reset the informations"
+          @click="reset">Reset</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <button type="button" class="attribution__toggle">
+        <span class="sr-only">Click to open attribution</span>
+        <img src="./assets/img/icon-person.svg">
+      </button>
+      <div class="attribution">
+        <span>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" title="See" target="_blank">Frontend Mentor</a>. </span>
+        <span>Coded by <a href="https://github.com/SebastienHinard/" target="_blank">Sébastien Hinard</a>.</span>
+      </div>
+    </footer>
+  </div>
+  <script src="./assets/js/app.js"></script>
+</body>
+</html>

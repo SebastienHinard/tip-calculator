@@ -1,0 +1,421 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+*,
+:after,
+:before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: "Space Mono", monospace;
+  font-size: 24px;
+  line-height: 1.2;
+  background: #c5e4e7;
+}
+
+@media (min-width: 768px) and (min-height: 700px) {
+  body {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.sr-only {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.calculator {
+  background: white;
+  color: #5e7a7d;
+  border-radius: 20px;
+  padding: 1em;
+  max-width: 100%;
+  margin: auto;
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+.calculator * {
+  -webkit-transition: inherit;
+  transition: inherit;
+}
+
+.calculator__title {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 1em;
+  letter-spacing: .3em;
+  margin: 2em 0;
+  color: #5e7a7d;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) and (min-height: 700px) {
+  .calculator__title {
+    margin-top: 0;
+  }
+}
+
+.calculator__label {
+  font-size: .7em;
+  margin-bottom: .4em;
+}
+
+.calculator__left {
+  margin-bottom: 24px;
+}
+
+.calculator__right {
+  background: #00494d;
+  color: white;
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.calculator__tips {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.calculator__input-group {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.calculator__error {
+  position: absolute;
+  top: -.4em;
+  right: 0;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  color: #b87f75;
+  font-size: .7em;
+  text-align: right;
+  white-space: nowrap;
+  -webkit-animation: pop-error .25s ease-in forwards;
+          animation: pop-error .25s ease-in forwards;
+}
+
+.calculator__error--bellow {
+  top: unset;
+  bottom: 0;
+  -webkit-transform: none;
+          transform: none;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
+.calculator__input {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  font-size: .9em;
+  line-height: 1;
+  font-weight: 700;
+  text-align: right;
+  height: 50px;
+  padding: 0 15px;
+  background: #f4fafa;
+  color: #00494d;
+  border: 2px solid transparent;
+  outline: 0;
+  font-family: inherit;
+}
+
+.calculator__input:hover, .calculator__input:focus {
+  border-color: #26c0ab;
+}
+
+.calculator__input.error {
+  border-color: #b87f75;
+}
+
+.calculator__input::-webkit-input-placeholder {
+  opacity: .6;
+}
+
+.calculator__input:-ms-input-placeholder {
+  opacity: .6;
+}
+
+.calculator__input::-ms-input-placeholder {
+  opacity: .6;
+}
+
+.calculator__input::placeholder {
+  opacity: .6;
+}
+
+.calculator__input--bill {
+  background: url("/assets/img/icon-dollar.svg") no-repeat left 10px center #f4fafa;
+  padding-left: 25px;
+}
+
+.calculator__input--people {
+  background: url("/assets/img/icon-person.svg") no-repeat left 10px center #f4fafa;
+  padding-left: 25px;
+}
+
+.calculator__btn {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  background-color: #00494d;
+  color: white;
+  border-radius: 4px;
+  height: 50px;
+  font-size: 1em;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  text-transform: uppercase;
+}
+
+.calculator__btn:hover, .calculator__btn:focus {
+  background: #9ce8df;
+  color: #00494d;
+}
+
+.calculator__btn.active {
+  background-color: #26c0ab;
+  color: #00494d;
+}
+
+.calculator__btn--reset {
+  color: #00494d;
+  background: #26c0ab;
+  font-size: .7em;
+  width: 100%;
+  margin-top: 1em;
+}
+
+.calculator__result-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.calculator__result-label {
+  color: white;
+  font-size: .7em;
+  margin: 1em 0;
+}
+
+.calculator__result-label span {
+  display: block;
+  color: #7f9c9f;
+  font-size: .8em;
+  margin-top: .5em;
+}
+
+.calculator__result-count {
+  font-weight: 700;
+  font-size: 1.4em;
+  color: #26c0ab;
+}
+
+@media (min-width: 500px) {
+  .calculator {
+    width: 500px;
+  }
+}
+
+@media (min-width: 768px) {
+  .calculator {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 700px;
+  }
+  .calculator__left, .calculator__right {
+    width: 50%;
+  }
+  .calculator__left {
+    padding-right: 2em;
+    margin: 0;
+  }
+  .calculator__right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .calculator__btn--reset {
+    margin-top: auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .calculator {
+    width: 920px;
+  }
+}
+
+@-webkit-keyframes pop-error {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop-error {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.attribution {
+  position: absolute;
+  top: .5em;
+  right: 3em;
+  left: .5em;
+  text-align: center;
+  background: #00494d;
+  padding: .4em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: .2em;
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+}
+
+.attribution.active {
+  -webkit-transform: none;
+          transform: none;
+}
+
+.attribution span {
+  font-size: .5em;
+  margin: .1em 0;
+  color: white;
+}
+
+.attribution a {
+  color: #26c0ab;
+}
+
+@media (min-width: 768px) {
+  .attribution {
+    border-radius: .5em;
+    padding: .5em 1em;
+    left: unset;
+  }
+  .attribution span {
+    font-size: .7em;
+  }
+}
+
+.attribution__toggle {
+  font-size: 1em;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  position: absolute;
+  border: none;
+  top: .5em;
+  right: .5em;
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  background: #00494d;
+  -webkit-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.attribution__toggle img {
+  width: .8em;
+  position: relative;
+  top: 3px;
+  left: 0;
+  -webkit-transition: inherit;
+  transition: inherit;
+}
+
+.attribution__toggle:after {
+  content: "?";
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  -webkit-transform: translateX(20px);
+          transform: translateX(20px);
+  -webkit-transition: inherit;
+  transition: inherit;
+  color: #7f9c9f;
+  font-weight: 700;
+}
+
+.attribution__toggle:hover, .attribution__toggle:focus, .attribution__toggle.active {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.attribution__toggle:hover img, .attribution__toggle:focus img, .attribution__toggle.active img {
+  left: -4px;
+}
+
+.attribution__toggle:hover:after, .attribution__toggle:focus:after, .attribution__toggle.active:after {
+  -webkit-transform: none;
+          transform: none;
+}
+/*# sourceMappingURL=styles.css.map */

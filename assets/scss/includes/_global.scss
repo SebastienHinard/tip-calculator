@@ -1,0 +1,26 @@
+*,
+:after,
+:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: $font-family;
+    font-size: $font-size;
+    line-height: 1.2;
+    background: $color-light;
+
+    @media (min-width: 768px) and (min-height: 700px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}

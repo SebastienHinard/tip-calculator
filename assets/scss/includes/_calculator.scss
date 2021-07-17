@@ -1,0 +1,214 @@
+.calculator {
+    background: $color-white;
+    color: $color-darker;
+    border-radius: 20px;
+    padding: 1em;
+    max-width: 100%;
+    margin: auto;
+    transition: .25s ease-in-out;
+
+    * {
+        transition: inherit;
+    }
+
+    &__title {
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 1em;
+        letter-spacing: .3em;
+        margin: 2em 0;
+        color: $color-darker;
+        font-weight: 700;
+        line-height: 1.5;
+
+        @media (min-width: 768px) and (min-height: 700px) {
+            margin-top: 0;
+        }
+
+    }
+
+    &__label {
+        font-size: .7em;
+        margin-bottom: .4em;
+    }
+
+    &__left {
+        margin-bottom: 24px;
+    }
+
+    &__right {
+        background: $color-darkest;
+        color: $color-white;
+        border-radius: 20px;
+        padding: 24px;
+    }
+
+    &__tips {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    &__input-group {
+        position: relative;
+        margin-bottom: 1em;
+    }
+
+    &__error {
+        position: absolute;
+        top: -.4em;
+        right: 0;
+        transform: translateY(-100%);
+        color: $color-error;
+        font-size: .7em;
+        text-align: right;
+        white-space: nowrap;
+        animation: pop-error .25s ease-in forwards;
+
+        &--bellow {
+            top: unset;
+            bottom: 0;
+            transform: none;
+            transform: translateY(100%);
+        }
+    }
+
+    &__input {
+        display: block;
+        width: 100%;
+        border-radius: 4px;
+        font-size: .9em;
+        line-height: 1;
+        font-weight: 700;
+        text-align: right;
+        height: 50px;
+        padding: 0 15px;
+        background: $color-lighter;
+        color: $color-darkest;
+        border: 2px solid transparent;
+        outline: 0;
+        font-family: inherit;
+
+        &:hover,
+        &:focus {
+            border-color: $color-strong;
+        }
+
+        &.error {
+            border-color: $color-error;
+        }
+
+        &::placeholder {
+            opacity: .6;
+        }
+
+        &--bill {
+            background: url('/assets/img/icon-dollar.svg') no-repeat left 10px center $color-lighter;
+            padding-left: 25px;
+        }
+
+        &--people {
+            background: url('/assets/img/icon-person.svg') no-repeat left 10px center $color-lighter;
+            padding-left: 25px;
+        }
+    }
+
+    &__btn {
+        appearance: none;
+        border: none;
+        background-color: $color-darkest;
+        color: $color-white;
+        border-radius: 4px;
+        height: 50px;
+        font-size: 1em;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: inherit;
+        text-transform: uppercase;
+
+        &:hover,
+        &:focus {
+            background: $color-strong-focus;
+            color: $color-darkest;
+        }
+
+        &.active {
+            background-color: $color-strong;
+            color: $color-darkest;
+        }
+
+        &--reset {
+            color: $color-darkest;
+            background: $color-strong;
+            font-size: .7em;
+            width: 100%;
+            margin-top: 1em;
+        }
+    }
+
+    &__result-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__result-label {
+        color: $color-white;
+        font-size: .7em;
+        margin: 1em 0;
+
+        span {
+            display: block;
+            color: $color-dark;
+            font-size: .8em;
+            margin-top: .5em;
+        }
+    }
+
+    &__result-count {
+        font-weight: 700;
+        font-size: 1.4em;
+        color: $color-strong;
+    }
+
+    @media (min-width: 500px) {
+        width: 500px;
+    }
+
+    @media (min-width: 768px) {
+        display: flex;
+        width: 700px;
+
+        &__left,
+        &__right {
+            width: 50%;
+        }
+
+        &__left {
+            padding-right: 2em;
+            margin: 0;
+        }
+
+        &__right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        &__btn--reset {
+            margin-top: auto;
+        }
+    }
+
+    @media (min-width: 992px) {
+        width: 920px;
+    }
+}
+
+@keyframes pop-error {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
