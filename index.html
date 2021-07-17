@@ -9,14 +9,19 @@
   <link rel="stylesheet" href="./assets/scss/styles.css">
 </head>
 <body>
-  <div id="calculator_app">
+  <div id="calculator_app" @click='closeDropdowns'>
     <header>
       <h1 class="calculator__title">Spli<br>tter</h1>
       <div class="select-lang">
-        <button @click='toggleLangDropdown' type="button" class="select-lang__toggle">{{lang}}</button>
+        <button
+          @click='toggleLangDropdown'
+          type="button"
+          class="select-lang__toggle">{{lang}}</button>
         <ul class="select-lang__list">
           <li v-for="_lang in languages" v-if="_lang !== lang">
-            <button @click="setLang(_lang)"class="select-lang__item">{{_lang}}</button>
+            <button
+              @click="setLang(_lang)"
+              class="select-lang__item">{{_lang}}</button>
           </li>
         </ul>
       </div>
@@ -94,7 +99,10 @@
       </div>
     </main>
     <footer>
-      <button type="button" class="attribution__toggle">
+      <button
+        type="button"
+        class="attribution__toggle"
+        @click="toggleAttribution">
         <span class="sr-only">{{translate('click_to_open_attribute')}}</span>
         <img src="./assets/img/icon-person.svg">
       </button>

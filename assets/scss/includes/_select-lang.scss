@@ -4,10 +4,11 @@
     right: 12px;
     display: flex;
     flex-direction: row-reverse;
-    background: #fff;
+    background-color: transparent;
     padding: 6px;
     margin: -6px;
     border-radius: 10px;
+    transition: .25s ease-in-out;
 
     &__toggle,
     &__item {
@@ -20,8 +21,9 @@
         text-transform: uppercase;
         cursor: pointer;
         transition: .25s ease-in-out;
-        background-color: $color-strong;
-        color: $color-darkest;
+
+        background: $color-darkest;
+        color: $color-dark;
         font-weight: 700;
 
         &:hover,
@@ -32,13 +34,12 @@
     }
 
     &__item {
-        background: $color-darkest;
-        color: $color-dark;
+        background-color: $color-strong;
+        color: $color-darkest;
 
         &:hover,
         &:focus {
-            background-color: $color-strong;
-            color: $color-darkest;
+            background: $color-strong-focus;
         }
     }
 
@@ -46,11 +47,22 @@
         margin-right: 6px;
         list-style: none;
         display: flex;
+        transform-origin: right;
+        opacity: 0;
+        pointer-events: none;
+        transition: .25s ease-in-out;
 
         li {
-            &:not(:last-child) {
-                margin-right: 6px;
-            }
+            margin-right: 6px;
+        }
+    }
+
+    &.open {
+        background-color: $color-white;
+
+        .select-lang__list {
+            opacity: 1;
+            pointer-events: unset;
         }
     }
 }
