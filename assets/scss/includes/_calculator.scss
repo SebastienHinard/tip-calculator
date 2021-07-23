@@ -104,12 +104,12 @@
 
         &--bill {
             background: url('/assets/img/icon-dollar.svg') no-repeat left 10px center $color-lighter;
-            padding-left: 25px;
+            padding-inline-start: 25px;
         }
 
         &--people {
             background: url('/assets/img/icon-person.svg') no-repeat left 10px center $color-lighter;
-            padding-left: 25px;
+            padding-inline-start: 25px;
         }
     }
 
@@ -185,7 +185,7 @@
         }
 
         &__left {
-            padding-right: 2em;
+            padding-inline-end: 2em;
             margin: 0;
         }
 

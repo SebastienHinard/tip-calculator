@@ -38,6 +38,10 @@ body {
   }
 }
 
+.rtl {
+  direction: rtl;
+}
+
 .sr-only {
   border: 0;
   clip: rect(0 0 0 0);
@@ -177,12 +181,14 @@ body {
 
 .calculator__input--bill {
   background: url("/assets/img/icon-dollar.svg") no-repeat left 10px center #f4fafa;
-  padding-left: 25px;
+  -webkit-padding-start: 25px;
+          padding-inline-start: 25px;
 }
 
 .calculator__input--people {
   background: url("/assets/img/icon-person.svg") no-repeat left 10px center #f4fafa;
-  padding-left: 25px;
+  -webkit-padding-start: 25px;
+          padding-inline-start: 25px;
 }
 
 .calculator__btn {
@@ -267,7 +273,8 @@ body {
     width: 50%;
   }
   .calculator__left {
-    padding-right: 2em;
+    -webkit-padding-end: 2em;
+            padding-inline-end: 2em;
     margin: 0;
   }
   .calculator__right {
@@ -385,6 +392,13 @@ body {
 .select-lang.open .select-lang__list {
   opacity: 1;
   pointer-events: unset;
+}
+
+.rtl .select-lang {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 .attribution {

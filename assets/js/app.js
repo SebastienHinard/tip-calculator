@@ -69,16 +69,21 @@ const app = new Vue({
     },
     computed: {
         tip_per_person: function () {
-            if (!this.bill || isNaN(this.bill) || !this.people || isNaN(this.people)) return 0
-
             const _tip = Number(this.custom_tip ? this.custom_tip : this.tip)
-            return this.currency + (Number(this.bill) / 100 * _tip / Number(this.people)).toFixed(2)
+            const result = Number((Number(this.bill) / 100 * _tip / Number(this.people)).toFixed(2))
+
+            if (isNaN(result) || result < 0) return this.currency + 0
+            return this.currency + result
         },
         total_per_person: function () {
-            if (!this.bill || isNaN(this.bill) || !this.people || isNaN(this.people)) return 0
-
             const _tip = Number(this.custom_tip ? this.custom_tip : this.tip)
-            return this.currency + (Number(this.bill) / 100 * _tip / Number(this.people) + Number(this.bill) / Number(this.people)).toFixed(2)
+            const result = Number((Number(this.bill) / 100 * _tip / Number(this.people) + Number(this.bill) / Number(this.people)).toFixed(2))
+
+            if (isNaN(result) || result < 0 || result === Infinity) return this.currency + 0
+            return this.currency + result
         },
-    }
+        is_rtl: function () {
+            return this.lang === 'ar'
+        }
+    },
 })
