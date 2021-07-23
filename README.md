@@ -1,3 +1,3 @@
 # TODO
-- Add localisation (spanish, italien, chinese)
-- Add currency selection ?
+- FIX ERROR MESSAGES POSITIONING
+- FIX INPUT ERROR STATE
