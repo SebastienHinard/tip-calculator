@@ -3,7 +3,7 @@ const app = new Vue({
     el: '#calculator_app',
     data: {
         languages: Object.keys(translations),
-        lang: 'fr',
+        lang: 'en',
         translations: translations,
         currency: '$',
         static_tips: [5, 10, 15, 25, 50],
