@@ -27,9 +27,16 @@
 
     }
 
+    &__label-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
     &__label {
         font-size: .7em;
         margin-bottom: .4em;
+        min-width: 50%;
     }
 
     &__left {
@@ -55,22 +62,10 @@
     }
 
     &__error {
-        position: absolute;
-        top: -.4em;
-        right: 0;
-        transform: translateY(-100%);
         color: $color-error;
         font-size: .7em;
         text-align: right;
-        white-space: nowrap;
         animation: pop-error .25s ease-in forwards;
-
-        &--bellow {
-            top: unset;
-            bottom: 0;
-            transform: none;
-            transform: translateY(100%);
-        }
     }
 
     &__input {
