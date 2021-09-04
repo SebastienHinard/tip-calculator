@@ -9,7 +9,11 @@
   <link rel="stylesheet" href="./assets/scss/styles.css">
 </head>
 <body>
-  <div id="calculator_app" @click='closeDropdowns'>
+  <div
+    id="calculator_app"
+    @click='closeDropdowns'
+    :lang="lang"
+    :class="{rtl: is_rtl}">
     <header>
       <h1 class="calculator__title">Spli<br>tter</h1>
       <div class="select-lang">
